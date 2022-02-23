@@ -1,5 +1,30 @@
 {
     "tasks": [
+        {
+            // Create package without namespace
+            "label": "SGD: Create Delta Packages",
+            "type": "shell",
+            "command": "sfdx",
+            "args": [
+                "sgd:source:delta",
+                "--to",
+                "${input:toBranch}",
+                "--from",
+                "${input:fromBranch}",
+                "--output",
+                "${input:outputdir}",
+            ],
+            "group": "build",
+            "problemMatcher" : [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        }, 
         { // Create package without namespace
             "label": "SFDX package: Create Package w/o namespace",
             "type": "shell",
@@ -177,6 +202,24 @@
         }
     ],
     "inputs": [
+        {
+            "id" : "toBranch",
+            "description": "commit sha to where the diff is done",
+            "type": "promptString",
+            "default": "HEAD"
+        }, 
+        {
+            "id" : "fromBranch",
+            "description": "commit sha from where the diff is done [git rev-list --max-parents=0 HEAD]",
+            "type": "promptString",
+            "default": "HEAD^"
+        }, 
+        {
+            "id" : "outputdir",
+            "description": "source package specific output",
+            "type": "promptString",
+            "default": "scripts/deploy"
+        },
         {
             "id" : "packageName",
             "description": "Enter package name(MUST be enclosed in DOUBLE QUOTES)",
