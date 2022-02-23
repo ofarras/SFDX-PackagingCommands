@@ -9,3 +9,9 @@
 - SFDX Package: Get all packages
 - SFDX Package: Get All Package Versions
 - SGD: Create Delta Manifest Packages
+
+# How to use tasks
+
+1 - Copy file tasks.json to .vscode folder
+2 - Run Ctrl + Alt + B
+3 - Enjoy it!!
